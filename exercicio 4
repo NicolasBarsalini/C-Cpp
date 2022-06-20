@@ -1,0 +1,75 @@
+//Exercício 4
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+/*
+SP – R$67.836,43
+RJ – R$36.678,66
+MG – R$29.229,88
+ES – R$27.165,48
+Outros – R$19.849,53
+*/
+int main()
+{
+	float sp=67836.43, rj=36678.66, mg=29229.88, es=27165.48, outros=19849.53;
+	char opcao;
+	float total=sp+rj+mg+es+outros;
+	printf("Digite a sigla de algum estado:");
+	fflush(stdin);
+	scanf("%c", &opcao);
+	switch(opcao)
+	{	
+		case's':
+		{
+			sp=(sp/total)*100;
+			printf("A porcentagem de sp eh: %.2f%%\n", sp);
+			system("PAUSE");
+			system("CLS");
+			main();
+			break;
+		}
+		case'r':
+		{
+			rj=(rj/total)*100;
+			printf("A porcentagem de rj eh: %.2f%%\n", rj);
+			system("PAUSE");
+			system("CLS");
+			main();
+			break;
+		}
+		case'm':
+		{
+		
+			mg=(mg/total)*100;
+			printf("A porcentagem de mg eh: %.2f%%\n", mg);
+			system("PAUSE");
+			system("CLS");
+			main();
+			break;
+		}
+		case'e':
+		{
+			es=(es/total)*100;
+			printf("A porcentagem de es eh: %.2f%%\n", es);
+			system("PAUSE");
+			system("CLS");
+			main();
+			break;
+		}
+		case'o':
+		{
+			outros=(outros/total)*100;
+			printf("A porcentagem de outros eh: %.2f%%\n", outros);
+			system("PAUSE");
+			system("CLS");
+			main();
+			break;
+		}
+		default:
+		{
+			printf("comando nao reconhecido\n");
+			system("PAUSE");
+			system("CLS");
+			main();
+		}
+	}
