@@ -1,9 +1,10 @@
-/*Aloque dinamicamente espaço e receba ‘números’ digitados 
-pelo usuário. O usuário poderá entrar com novos ‘números’, até 
-que este escolha a opção N (Deseja continuar? (S/N)). Em 
-seguida, determine a média e aloque espaço para os números 
-menores e maiores que a média. Mostre na tela. Utilizar função 
-para alocação dinâmica.*/
+/*Aloque dinamicamente espaÃ§o e receba â€˜nÃºmerosâ€™ digitados 
+pelo usuÃ¡rio. O usuÃ¡rio poderÃ¡ entrar com novos â€˜nÃºmerosâ€™, atÃ© 
+que este escolha a opÃ§Ã£o N (Deseja continuar? (S/N)). Em 
+seguida, determine a mÃ©dia e aloque espaÃ§o para os nÃºmeros 
+menores e maiores que a mÃ©dia. Mostre na tela. Utilizar funÃ§Ã£o 
+para alocaÃ§Ã£o dinÃ¢mica.*/
+/*Exercice involving dinamic alocation on C++, perfomed with pointer - en-US*/
 
 #include <stdio.h>
 #include <stdlib.h>
