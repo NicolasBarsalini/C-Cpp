@@ -1,0 +1,142 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <Locale.h>
+
+typedef struct prato{
+	char nome[20];
+	char categoria[30];
+	char ingredientes[50];
+	float preco;
+	int numprato;
+}prato;
+
+void alocaprato(prato **p, int tam);
+void criarprato(prato *p);
+void mostrapratos(prato *p, int qtde);
+float compra(prato *p, int tam);
+
+main()
+{
+	setlocale(LC_ALL, "Portuguese");
+	prato *pp=NULL;
+	int op, cont=0;
+	float soma=0;
+	do{
+		system("CLS");
+	printf("Opção:\n\n[1] Criar Prato\n[2] Realizar Pedido\n[3] Encerrar o dia\n\n");
+	scanf("%i", &op);
+	fflush(stdin);
+	switch(op)
+	{
+		case 1:
+			alocaprato(&pp, cont+1);
+			criarprato(pp+cont);
+			cont++;
+			break;
+		case 2:
+			mostrapratos(pp, cont);
+			soma+=compra(pp, cont);
+			break;
+		case 3:
+			printf("Fechando Expediente!\nTotal Arrecadado: %.2f\n", soma);
+			system("PAUSE");
+			exit(1);
+			break;
+	}
+	}while(1<op<3);
+}
+
+void alocaprato(prato **p, int tam)
+{
+	if((*p=(prato*)realloc(*p, tam*sizeof(prato)))==NULL)
+	{
+		printf("\nErro ao criar prato!\n");
+		exit(1);
+	}
+}
+
+void criarprato(prato *p)
+{
+	system("ClS");
+	int op;
+	printf("Digite o nome do prato: ");
+	gets(p->nome);
+	fflush(stdin);
+	printf("\nDigite a categoria do prato: ");
+	gets(p->categoria);
+	fflush(stdin);
+	printf("\nDigite os Ingredientes: ");
+	gets(p->ingredientes);
+	fflush(stdin);
+	printf("\nDigite o preço do prato (sem letras): ");
+	scanf("%f", &(p->preco));
+	fflush(stdin);
+	printf("\nNúmero do prato (sem letras e sem vírgula): ");
+	scanf("%i", &(p->numprato));
+	fflush(stdin);
+	printf("\n\nTudo foi digitado corretamente?[1]-Sim || [2]-Não -> ");
+	scanf("%i", &op);
+	fflush(stdin);
+	if(op!=1)
+	{
+		printf("Digite novamente...");
+		criarprato(p);
+	}
+	else
+	{
+		printf("\n\n\n");
+		printf("Prato Criado com Sucesso!\n\n");
+		printf("Nome: %s\n", p->nome);
+		printf("Categoria: %s\n", p->categoria);
+		printf("Ingredientes: %s\n", p->ingredientes);
+		printf("Preço: %.2f\n", p->preco);
+		printf("Número do Prato: %i\n\n", p->numprato);
+	}
+	system("PAUSE");
+}
+
+void mostrapratos(prato *p, int qtde)
+{
+	system("CLS");
+	int i;
+	printf("Pratos Disponíveis: \n\n");
+	if(qtde==0)
+		printf("Sem pratos no cardápio!!\n");
+	else
+	{
+		for(i=0; i<qtde; i++, p++)
+		{
+			printf("Prato: %i\n", p->numprato );
+			printf("   Nome: %s\n", p->nome);
+			printf("   Categoria: %s\n", p->categoria );
+			printf("   Preço: %.2f\n", p->preco );
+			printf("   Ingredientes: %s\n", p->ingredientes );
+			printf("\n\n");
+		}
+	} 
+	system("PAUSE");
+}
+
+float compra(prato *p, int tam)
+{
+	int op, i;
+	float valor=0;
+	printf("\n\nDigite o numero do prato desejado: ");
+	scanf("%i", &op);
+	fflush(stdin);
+	for(i=0; i<tam; i++, p++)
+	{
+		if(op==p->numprato)
+		{
+			valor=p->preco;
+			printf("Total: %.2f\n", valor);
+			system("PAUSE");
+			return valor;
+		}
+	}
+	printf("Prato não Encontrado!\n");
+	system("PAUSE");
+}
+	
+	
+	
